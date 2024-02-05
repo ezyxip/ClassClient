@@ -47,6 +47,11 @@ namespace ClassroomSubjectArea
             return res;
         }
 
+        public List<Classroom> GetClassroomsByFilter(Func<Classroom, bool> condition)
+        {
+            return storage.Where(condition).ToList();
+        }
+
         override public string ToString()
         {
             return string.Join(", \n", storage);

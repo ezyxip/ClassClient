@@ -33,10 +33,10 @@ class HelloWorld
 
         MenuItem addClassroomItem = new AddClassItem("1", repository);
         MenuItem updateClassroomItem = new MenuItem("2", () => { }, "Изменение параметров аудитории");
-        MenuItem findBySeats = new MenuItem("3", () => { }, "Поиск аудиторий по количеству посадочных мест");
-        MenuItem findByComputers = new MenuItem("4", () => { }, "Поиск аудитории по количеству компьютеров");
-        MenuItem findByComputersAndPlace = new MenuItem("5", () => { }, "Поиск аудитории по месту и количеству компьютеров");
-        MenuItem findBySeatsAndLevel = new MenuItem("6", () => { }, "Поиск аудитории по месту и количеству посадочных мест");
+        MenuItem findBySeats = new FindBySeats("3", repository);
+        MenuItem findByComputers = new FindByComputersItem("4", repository);
+        MenuItem findByComputersAndPlace = new FindByComputersAndPlaceItem("5", repository);
+        MenuItem findBySeatsAndLevel = new FindBySeatsAndPlaceItem("6", repository);
         MenuItem showAllRepo = new MenuItem("7", () => { Console.WriteLine(repository);  }, "Показать все данные");
 
         Menu menu = new Menu(
@@ -51,10 +51,5 @@ class HelloWorld
             );
 
         menu.StartWithHelp();
-    }
-
-    public static void AddClassroomCommand()
-    {
-
     }
 }
