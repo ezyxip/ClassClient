@@ -32,7 +32,7 @@ class HelloWorld
         ClassroomRepository repository = new ClassroomRepository();
 
         MenuItem addClassroomItem = new AddClassItem("1", repository);
-        MenuItem updateClassroomItem = new MenuItem("2", () => { }, "Изменение параметров аудитории");
+        MenuItem deleteClassroomItem = new DeleteCLassItem("2", repository);
         MenuItem findBySeats = new FindBySeats("3", repository);
         MenuItem findByComputers = new FindByComputersItem("4", repository);
         MenuItem findByComputersAndPlace = new FindByComputersAndPlaceItem("5", repository);
@@ -40,9 +40,9 @@ class HelloWorld
         MenuItem showAllRepo = new MenuItem("7", () => { Console.WriteLine(repository);  }, "Показать все данные");
 
         Menu menu = new Menu(
-            invitation: "menu:> ",
+            invitation: "class-stock:> ",
             addClassroomItem, 
-            updateClassroomItem, 
+            deleteClassroomItem, 
             findBySeats, 
             findByComputers, 
             findByComputersAndPlace, 

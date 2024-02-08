@@ -66,7 +66,7 @@ namespace ClassroomSubjectArea
             return (building, level, number);
         }
 
-        private bool ValidateAdress(string adress)
+        public static bool ValidateAdress(string adress)
         {
             Regex regex = new Regex(@"^\d+-\d\d+$");
             return regex.IsMatch(adress);
@@ -74,10 +74,11 @@ namespace ClassroomSubjectArea
 
         override public string ToString()
         {
-            return "Classroom {"
-                + "adress: " + Adress + ", "
-                + "Seats: " + CountOfSeats + ", "
-                + "}";
+            return $"[Аудитория {Adress}: "
+                + "Посадочных мест: " + CountOfSeats + "; "
+                + "Компьютерных мест: " + CountOfComputers + "; "
+                + "Наличие проектора: " + (IsHaveProjector ? "есть" : "нет") + "; " 
+                + "]";
         }
     }
 }

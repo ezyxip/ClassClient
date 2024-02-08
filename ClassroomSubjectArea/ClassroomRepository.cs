@@ -17,6 +17,8 @@ namespace ClassroomSubjectArea
 
         public void Add(Classroom elem)
         {
+            if (storage.Find(e => e.Adress == elem.Adress) != null) 
+                throw new Exception("Аудитория с таким адресом уже существует");
             storage.Add(elem);
         }
 
@@ -50,6 +52,14 @@ namespace ClassroomSubjectArea
         public List<Classroom> GetClassroomsByFilter(Func<Classroom, bool> condition)
         {
             return storage.Where(condition).ToList();
+        }
+
+        public bool DeleteClassroom(string adress)
+        {
+            int size = storage.Count();
+            storage = storage.Where(e => e.Adress != adress).ToList();
+
+            return size != storage.Count;
         }
 
         override public string ToString()

@@ -35,6 +35,8 @@ namespace ClassClient.MenuItems
         {
             Console.Write("Адрес кабинета: ");
             string res = Console.ReadLine();
+            if (!Classroom.ValidateAdress(res)) 
+                throw new Exception("Не является адресом");
 
             return res;
         }
@@ -42,7 +44,22 @@ namespace ClassClient.MenuItems
         private int RequestSeats()
         {
             Console.Write("Количество сидячих мест: ");
-            int res = Convert.ToInt32(Console.ReadLine());
+            string? input = Console.ReadLine();
+
+            return ValidateSeats(input);
+        }
+
+        private int ValidateSeats(string? input)
+        {
+            int res;
+            try
+            {
+                res = int.Parse(input);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Недопустимое значение");
+            }
 
             return res;
         }
@@ -50,16 +67,24 @@ namespace ClassClient.MenuItems
         private bool RequestHavingProjector()
         {
             Console.Write("В наличии ли проектор? (Д/Н): ");
-            string res = Console.ReadKey().ToString().ToLower();
-            Console.WriteLine();
-
+            string res = Console.ReadLine().ToString().ToLower();
+            Console.WriteLine(res == "д" ? "Выбран ответ \"Да\"" : "Выбран ответ \"Нет\"");
             return res == "д";
         }
 
         private int RequestCountOfComputers()
         {
             Console.Write("Количество компьютеров: ");
-            int res = Convert.ToInt32(Console.ReadLine());
+            int res;
+            try
+            {
+                res = Convert.ToInt32(Console.ReadLine());
+            }
+            catch 
+            { 
+                throw new Exception("Недопустимое значение");
+            }
+            
 
             return res;
         }

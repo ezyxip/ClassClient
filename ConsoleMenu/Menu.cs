@@ -35,11 +35,16 @@ namespace ConsoleMenu
         {
             while (true)
             {
-                Console.Write("\n" + Invitation);
-                string input = Console.ReadLine();
-                if (input == "exit") break;
-                ExecuteCommand(input);
-
+                try
+                {
+                    Console.Write("\n" + Invitation);
+                    string input = Console.ReadLine();
+                    if (input == "exit") break;
+                    ExecuteCommand(input);
+                } catch (Exception ex)
+                {
+                    Console.WriteLine($"[{ex.Message}]");
+                }
             }
         }
 

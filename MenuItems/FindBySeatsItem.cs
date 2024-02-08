@@ -23,7 +23,7 @@ namespace ClassClient.MenuItems
         {
             Console.WriteLine("Введите минимальное количество сидячих мест для поиска");
             int minimalSeatsCount = Convert.ToInt32(Console.ReadLine());
-            List<Classroom> result = repository.GetClassroomsByFilter((e)=>e.CountOfSeats == minimalSeatsCount);
+            List<Classroom> result = repository.GetClassroomsByFilter((e)=>e.CountOfSeats >= minimalSeatsCount);
             Console.WriteLine("{0}", string.Join("\n", result));
         }
     }
