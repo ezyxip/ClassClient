@@ -14,7 +14,9 @@ class FindByComputersAndPlaceItem : MenuItem{
         int building = Convert.ToInt32( Console.ReadLine() );
         Console.Write("Введите номер этажа: ");
         int level = Convert.ToInt32( Console.ReadLine() );
-        List<Classroom> result = repository.GetClassroomsByFilter((e) => e.Building == building && e.Level == level && e.IsHaveComputer);
+        Console.Write("Введите минимальное количество компьютеров: ");
+        int countOfComputers = Convert.ToInt32(Console.ReadLine());
+        List<Classroom> result = repository.GetClassroomsByFilter((e) => e.Building == building && e.Level == level && e.CountOfComputers == countOfComputers);
         Console.WriteLine("{0}", string.Join("\n", result));
     }
 }

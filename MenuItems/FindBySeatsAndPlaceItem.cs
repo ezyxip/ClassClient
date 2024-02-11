@@ -4,7 +4,7 @@ using ConsoleMenu;
 class FindBySeatsAndPlaceItem : MenuItem{
     ClassroomRepository repository;
     public FindBySeatsAndPlaceItem(string key, ClassroomRepository repository)
-    :base(key, "Поиск аудитории по количеству компьютеров на этаже"){
+    :base(key, "Поиск аудитории по месту и посадочным местам"){
         this.repository = repository;
         this.Execute = () => Find();
     }
@@ -16,7 +16,7 @@ class FindBySeatsAndPlaceItem : MenuItem{
         int level = Convert.ToInt32( Console.ReadLine() );
         Console.Write("Введите необходимое количество посадочных мест: ");
         int seats = Convert.ToInt32( Console.ReadLine() );
-        List<Classroom> result = repository.GetClassroomsByFilter((e) => e.Building == building && e.Level == level && e.CountOfSeats == seats);
+        List<Classroom> result = repository.GetClassroomsByFilter((e) => e.Building == building && e.Level == level && e.CountOfSeats >= seats);
         Console.WriteLine("{0}", string.Join("\n", result));
     }
 }
